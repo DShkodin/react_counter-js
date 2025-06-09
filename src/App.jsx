@@ -1,21 +1,15 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import './App.scss';
 
 export const App = () => {
   const [count, setCount] = useState(0);
-  const countRef = useRef(count);
-
-  const syncCount = updater => {
-    countRef.current = updater(countRef.current);
-    setCount(countRef.current);
-  };
 
   const addOne = () => {
-    syncCount(prev => prev + 1);
+    setCount(currentCount => currentCount + 1);
   };
 
   const add100 = () => {
-    syncCount(prev => prev + 100);
+    setCount(currentCount => currentCount + 100);
   };
 
   // DON'T change the code below
